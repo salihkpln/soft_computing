@@ -41,7 +41,7 @@ fault(fren_tutmuyor, 'Fren Tutmuyor') :-symptom(hidrolik_az, 'Fren hidroliği az
 symptom(_Hata_Kodu, Hata) :- %Hata_Kodu kullanılmayacağı için başına _ eklendi.
     format('~w (e/h):', [Hata]),
     read(Cevap),
-    Cevap = e.
+    (Cevap = e -> true ; fail).
 
 % Teşhis İşlemi yapılır.
 diagnosis :- 
@@ -51,3 +51,6 @@ diagnosis :-
  			format('Başka arıza bulunamadı.~n');
     		format('Olası Arızalar: ~w.~n', [Liste])
     ).
+
+% Çalıştırma
+% ?- diagnosis.
